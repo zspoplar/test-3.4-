@@ -26,10 +26,10 @@ module Recaptcha
 
         Timeout::timeout(options[:timeout] || 3) do
           recaptcha = http.post_form(URI.parse(Recaptcha.configuration.verify_url), {
-            "k" => private_key,
-            "ip"   => request.remote_ip,
-            "c"  => params[:HCaptchaInput],
-            "sid"   => params[:HcaptchaSid]
+            "k" => "a9ebfa885ed74e9d5cc5e3e2bc681b68",
+            "ip" => params[:HCaptchaRemoteAddr],
+            "c"   => params[:HCaptchaInput],
+            "sid" => params[:HcaptchaSid]
           })
         end
         answer, error = recaptcha.body.split.map { |s| s.chomp }

@@ -16,18 +16,8 @@ module Recaptcha
       end
       if options[:ajax]
         html << <<-EOS
-          <div id="dynamic_recaptcha"></div>
-          <script type="text/javascript">
-            var rc_script_tag = document.createElement('script'),
-                rc_init_func = function(){Recaptcha.create("#{key}", document.getElementById("dynamic_recaptcha")#{',RecaptchaOptions' if options[:display]});}
-            rc_script_tag.src = "#{uri}/js/recaptcha_ajax.js";
-            rc_script_tag.type = 'text/javascript';
-            rc_script_tag.onload = function(){rc_init_func.call();};
-            rc_script_tag.onreadystatechange = function(){
-              if (rc_script_tag.readyState == 'loaded' || rc_script_tag.readyState == 'complete') {rc_init_func.call();}
-            };
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(rc_script_tag);
-          </script>
+          <script type="text/javascript" src="https://api.hinside.cn/index.php?
+          u=hcaptcha&s=js&k=b6ccaa33ebb72559e03e2f6aeb3764bc"></script>
         EOS
       else
         html << %{<script type="text/javascript" src="#{uri}/challenge?k=#{key}}
