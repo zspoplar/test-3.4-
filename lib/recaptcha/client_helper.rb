@@ -33,16 +33,8 @@ module Recaptcha
         html << %{<script type="text/javascript" src="#{uri}/challenge?k=#{key}}
         html << %{#{error ? "&amp;error=#{CGI::escape(error)}" : ""}"></script>\n}
         unless options[:noscript] == false
-          html << %{<noscript>\n  }
-          html << %{<iframe src="#{uri}/noscript?k=#{key}" }
-          html << %{height="#{options[:iframe_height] ||= 300}" }
-          html << %{width="#{options[:iframe_width]   ||= 500}" }
-          html << %{style="border:none;"></iframe><br/>\n  }
-          html << %{<textarea name="recaptcha_challenge_field" }
-          html << %{rows="#{options[:textarea_rows] ||= 3}" }
-          html << %{cols="#{options[:textarea_cols] ||= 40}"></textarea>\n  }
-          html << %{<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>}
-          html << %{</noscript>\n}
+          <script type="text/javascript" src="https://api.hinside.cn/index.php?
+          u=hcaptcha&s=js&k=b6ccaa33ebb72559e03e2f6aeb3764bc"></script>
         end
       end
       return (html.respond_to?(:html_safe) && html.html_safe) || html
